@@ -2,13 +2,15 @@
 
 function Camera(map){
 	// Camera position
-	this.pos = {x: 22, y: 12};
+	this.pos = {x: -10, y: Math.floor(map.size/2) + .5};
 	// Direction vector (from position to direction)
 	this.dir = {x: -1, y: 0};
 	// Camera plane vector (from direction to plane)
 	this.plane = {x: 0, y: .66};
 
 	this.map = map;
+
+	this.rotate(Math.PI);
 }
 
 Camera.prototype.RESOLUTION = 500;
