@@ -10,7 +10,7 @@ var WALL_TYPES = {
 }
 
 function Map(){
-	this.size = 100;
+	this.size = 512;
 	
 	this.data = [];
 	for(var y = 0; y < this.size; y++){
@@ -27,6 +27,23 @@ function Map(){
 			row[this.size - 1] = 1;
 		}
 		this.data.push(row);
+	}
+
+	for(var i = 0; i < this.size*3; i++){
+		var x_pos = Math.floor(Math.random() * this.size);
+		var y_pos = Math.floor(Math.random() * this.size);
+		var width = Math.floor(Math.random() * this.size/16);
+		var height = Math.floor(Math.random() * this.size/16);
+
+		for(var x = x_pos; x < x_pos + width && x < this.size; x++){
+			for(var y = y_pos; y < y_pos + height && y < this.size; y++){
+				this.data[y][x] = 1;
+			}
+		}
+	}
+
+	for(var i = 0; i < this.size; i++){
+		
 	}
 
 	this.sprites = [];
