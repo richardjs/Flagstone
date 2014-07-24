@@ -6,6 +6,6 @@
 Camera.prototype.SKY_COLOR = '#114';
 Camera.prototype.GROUND_COLOR = '#454';
 
-Camera.prototype.MAX_DISTANCE = 75;
+Camera.prototype.MAX_DISTANCE = 200;
 
 Controller.prototype.ROTATE_SPEED = 2*Math.PI/5/1000;
