@@ -12,6 +12,7 @@ var WALL_TYPES = {
 function Map(){
 	this.size = 512;
 	
+	// Create huge empty room
 	this.data = [];
 	for(var y = 0; y < this.size; y++){
 		var row = [];
@@ -29,21 +30,21 @@ function Map(){
 		this.data.push(row);
 	}
 
-	for(var i = 0; i < this.size*3; i++){
+	// Fill with squares of walls
+	for(var i = 0; i < this.size*7; i++){
 		var x_pos = Math.floor(Math.random() * this.size);
 		var y_pos = Math.floor(Math.random() * this.size);
-		var width = Math.floor(Math.random() * this.size/16);
-		var height = Math.floor(Math.random() * this.size/16);
+		var width = Math.floor(Math.random() * this.size/32);
+		var height = Math.floor(Math.random() * this.size/32);
 
 		for(var x = x_pos; x < x_pos + width && x < this.size; x++){
 			for(var y = y_pos; y < y_pos + height && y < this.size; y++){
+				if(Math.random() < .05){
+					continue;
+				}
 				this.data[y][x] = 1;
 			}
 		}
-	}
-
-	for(var i = 0; i < this.size; i++){
-		
 	}
 
 	this.sprites = [];
