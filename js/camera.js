@@ -175,11 +175,14 @@ Camera.prototype.render = function(canvas, ctx){
 			textureX = wallTexture.width - textureX - 1;
 		}
 
-		ctx.drawImage(
-			wallTexture,
-			textureX, 0, 1, wallTexture.height,
-			renderX*stripeWidth, lineTop, stripeWidth, lineHeight
-		)
+		try{
+			//TODO: fix this with more than just a band-aid
+			ctx.drawImage(
+				wallTexture,
+				textureX, 0, 1, wallTexture.height,
+				renderX*stripeWidth, lineTop, stripeWidth, lineHeight
+			)
+		}catch(IndexSizeError){}
 
 		if(lastSide == 1){
 			ctx.fillStyle = 'rgba(0, 0, 0, .6)';
