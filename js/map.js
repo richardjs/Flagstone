@@ -47,5 +47,28 @@ Map.prototype.at = function(x, y){
 Map.prototype.addSprite = function(sprite){
 	this.sprites.push(sprite);
 }
+Map.prototype.drawMap = function(){
+	/* create a canvas and draw a map on it--mainly for dev work */
+	var canvas = document.createElement('canvas');
+	canvas.width = this.size;
+	canvas.height = this.size;
+	document.body.appendChild(canvas);
+
+	var ctx = canvas.getContext('2d');
+	ctx.fillStyle = '#fff';
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+	ctx.fillStyle = '#222';
+	for(var x = 0; x < this.size; x++){
+		for(var y = 0; y < this.size; y++){
+			if(this.data[x][y]){
+				ctx.fillRect(x, canvas.height-y-1, 1, 1);
+			}
+		}
+	}
+
+	ctx.fillStyle = '#f00';
+	ctx.fillRect(this.flag.x-1, canvas.height - this.flag.y-1 - 1, 3, 3);
+}
 
 var map = new Map();
