@@ -47,6 +47,9 @@ Map.prototype.at = function(x, y){
 Map.prototype.addSprite = function(sprite){
 	this.sprites.push(sprite);
 }
+Map.prototype.removeSprite = function(sprite){
+	this.sprites.splice(this.sprites.indexOf(sprite));
+}
 Map.prototype.drawMap = function(){
 	/* create a canvas and draw a map on it--mainly for dev work */
 	var canvas = document.createElement('canvas');
