@@ -6,11 +6,6 @@ stoneWallTexture.src = 'img/william_wall.png';
 var ballImage = new Image();
 ballImage.src = 'img/ball.png';
 
-var WALL_TYPES = {
-	1: {
-		texture: stoneWallTexture,
-	},
-}
 
 function Sprite(x, y, image){
 	this.x = x;
@@ -18,9 +13,16 @@ function Sprite(x, y, image){
 	this.image = image;
 }
 
+
 function Map(){
 	this.size = 512;
 	this.sprites = [];
+
+	this.wallTypes = {
+		1: {
+			texture: stoneWallTexture,
+		}
+	}
 	
 	do{
 		console.log('Generating map...');
@@ -30,6 +32,7 @@ function Map(){
 
 	this.flag = new Sprite(flagCoord.x + .5, flagCoord.y + .5, ballImage);
 	this.addSprite(this.flag);
+
 }
 Map.prototype.at = function(x, y){
 	// Either pass two arguments or a point object (i.e. {x: 0, y: 0})
@@ -42,7 +45,7 @@ Map.prototype.at = function(x, y){
 		return undefined;
 	}
 
-	return WALL_TYPES[this.data[x][y]];
+	return this.wallTypes[this.data[x][y]];
 }
 Map.prototype.addSprite = function(sprite){
 	this.sprites.push(sprite);
