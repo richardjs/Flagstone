@@ -20,7 +20,29 @@ Game.prototype.start = function(){
 		camera.update(delta);
 		controller.update(delta);
 
+		if(map.flag
+				&& Math.floor(camera.pos.x) == Math.floor(map.flag.x)
+				&& Math.floor(camera.pos.y) == Math.floor(map.flag.y)){
+			map.removeSprite(map.flag);
+			map.flag = null;
+		}
+		if(!map.flag){
+			var margin = 2;
+			if(camera.pos.x < 0 - margin || camera.pos.x > map.size + margin
+					&& camera.pos.y < 0 - margin || camera.pos.x > map.size + margin){
+				window.setTimeout(function(){
+					window.location = '/congratulations.html';
+				}, 1000);
+			}
+		}
+
 		camera.render(gameloop.canvas, gameloop.ctx);
+
+		if(!map.flag){
+			game.ctx.fillStyle = '#aaa';
+			game.ctx.font = '8pt Courier';
+			game.ctx.fillText('flag obtained', canvas.width - 90, 15);
+		}
 
 		window.requestAnimationFrame(frame);
 	}
