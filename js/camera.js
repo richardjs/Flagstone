@@ -11,10 +11,12 @@ function Camera(map){
 	this.map = map;
 
 	this.rotate(Math.PI);
+
+	// Used for sky color calculations
+	this.maxFlagDistance = 0;
 }
 
 Camera.prototype.RESOLUTION = 500;
-Camera.prototype.SKY_COLOR = '#55a';
 Camera.prototype.GROUND_COLOR = '#757';
 Camera.prototype.WALL_X_COLOR = '#5a5';
 Camera.prototype.WALL_Y_COLOR = '#272';
@@ -34,8 +36,22 @@ Camera.prototype.rotate = function(angle){
 Camera.prototype.update = function(delta){
 }
 Camera.prototype.render = function(canvas, ctx){
-	ctx.fillStyle = this.SKY_COLOR;
+	// Sky changes color based on distance from the flag
+	var flagDistance;
+	if(map.flag){
+		flagDistance = Math.sqrt(
+			Math.pow((this.pos.x - this.map.flag.x), 2) + Math.pow((this.pos.y - this.map.flag.y), 2)
+		);
+	}else{
+		flagDistance = 0;
+	}
+	if(flagDistance > this.maxFlagDistance){
+		this.maxFlagDistance = flagDistance;
+	}
+	var skyBlue = Math.floor(200 * (flagDistance / this.maxFlagDistance)) + 30;
+	ctx.fillStyle = 'rgb(30, 0, '+skyBlue+')';
 	ctx.fillRect(0, 0, canvas.width, canvas.height/2);
+
 	ctx.fillStyle = this.GROUND_COLOR;
 	ctx.fillRect(0, canvas.height/2, canvas.width, canvas.height/2);
 
