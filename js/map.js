@@ -1,10 +1,7 @@
 'use strict';
 
-var stoneWallTexture = new Image();
-stoneWallTexture.src = 'img/william_wall.png';
-
-var ballImage = new Image();
-ballImage.src = 'img/ball.png';
+var stoneWallTexture = document.getElementById('stoneWallTexture');
+var ballImage = document.getElementById('ballImage');
 
 
 function Sprite(x, y, image){
@@ -29,6 +26,7 @@ function Map(){
 		this.data = generateMap(this.size);	
 		var flagCoord = placeFlag(this, {x: 0, y: this.size/2});
 	}while(flagCoord === null);
+	flagWalls(map);
 
 	this.flag = new Sprite(flagCoord.x + .5, flagCoord.y + .5, ballImage);
 	this.addSprite(this.flag);
@@ -77,4 +75,4 @@ Map.prototype.drawMap = function(){
 	ctx.fillRect(this.flag.x-1, canvas.height - this.flag.y-1 - 1, 3, 3);
 }
 
-var map = new Map();
+var map;

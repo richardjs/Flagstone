@@ -49,5 +49,8 @@ Game.prototype.start = function(){
 	window.requestAnimationFrame(frame);
 }
 
-var game = new Game(document.getElementById('canvas'));
-game.start();
+window.addEventListener('load', function(){
+	map = new Map();
+	var game = new Game(document.getElementById('canvas'));
+	game.start();
+});
