@@ -26,7 +26,7 @@ function Map(){
 		this.data = generateMap(this.size);	
 		var flagCoord = placeFlag(this, {x: 0, y: this.size/2});
 	}while(flagCoord === null);
-	flagWalls(map);
+	flagWalls(this);
 
 	this.flag = new Sprite(flagCoord.x + .5, flagCoord.y + .5, ballImage);
 	this.addSprite(this.flag);
