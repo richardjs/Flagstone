@@ -62,10 +62,19 @@ Map.prototype.drawMap = function(){
 	ctx.fillStyle = '#fff';
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-	ctx.fillStyle = '#222';
+	var areaColors = []
 	for(var x = 0; x < this.size; x++){
 		for(var y = 0; y < this.size; y++){
 			if(this.data[x][y]){
+				ctx.fillStyle = '#222';
+				ctx.fillRect(x, canvas.height-y-1, 1, 1);
+			}
+			else if(this.areas[x][y]){
+				var area = this.areas[x][y];
+				if(!areaColors[area]){
+					areaColors[area] = randomColor();
+				}
+				ctx.fillStyle = areaColors[area];
 				ctx.fillRect(x, canvas.height-y-1, 1, 1);
 			}
 		}
