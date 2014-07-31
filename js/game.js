@@ -13,6 +13,7 @@ Game.prototype.start = function(){
 
 	var controller = new Controller(camera);
 
+	var game = this;
 	function frame(time){
 		var delta = time - gameloop.lastTime;
 		gameloop.lastTime = time;

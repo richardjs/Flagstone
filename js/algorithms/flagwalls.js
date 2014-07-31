@@ -53,7 +53,7 @@ function makeFlagTexture(){
 }
 
 function flagWalls(map){
-	var flagAreas = Math.floor(map.size/32);
+	var flagAreas = Math.floor(map.size/4);
 	var areas = [];
 	for(var i = 0; i < map.size; i++){
 		areas[i] = [];
@@ -70,7 +70,7 @@ function flagWalls(map){
 			start.y = Math.floor(Math.random() * map.size);
 		}while(map.data[start.x][start.y] && areas[start.x][start.y]);
 
-		var totalArea = Math.floor(Math.random() * (Math.pow(map.size, 2) / flagAreas))
+		var totalArea = Math.floor(Math.random() * (3*Math.pow(map.size, 2) / flagAreas))
 		var remainingArea = totalArea;
 		var coords = [start]
 		while(remainingArea && coords.length){
@@ -85,8 +85,8 @@ function flagWalls(map){
 				]
 				for(var j = 0; j < neighbors.length; j++){
 					var neighbor = neighbors[j];
-					if(neighbor.x < 0 || neighbor.x >= map.size
-							|| neighbor.y < 0 || neighbor.y >= map.size){
+					if(neighbor.x < 1 || neighbor.x >= map.size - 1
+							|| neighbor.y < 1 || neighbor.y >= map.size - 1){
 						continue;
 					}
 					if(areas[neighbor.x][neighbor.y]){
