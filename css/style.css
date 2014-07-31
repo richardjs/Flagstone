@@ -1,5 +1,11 @@
 body{
 	background: #001;
+	color: #668;
+	font-size: 12pt;
+}
+
+a{
+	color: #158;
 }
 
 canvas{
