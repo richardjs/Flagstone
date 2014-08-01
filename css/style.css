@@ -8,6 +8,10 @@ a{
 	color: #158;
 }
 
+hr{
+	border-color: #223;
+}
+
 canvas{
 	display: block;
 	margin: 50px auto;
