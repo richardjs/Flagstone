@@ -32,7 +32,7 @@ Game.prototype.start = function(){
 			if(camera.pos.x < 0 - margin || camera.pos.x > map.size + margin
 					&& camera.pos.y < 0 - margin || camera.pos.x > map.size + margin){
 				window.setTimeout(function(){
-					window.location = '/congratulations.html';
+					window.location = 'congrats.html';
 				}, 1000);
 			}
 		}
