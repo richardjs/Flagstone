@@ -42,7 +42,7 @@ Game.prototype.start = function(){
 		if(!map.flag){
 			game.ctx.fillStyle = '#aaa';
 			game.ctx.font = '8pt Courier';
-			game.ctx.fillText('flag obtained', canvas.width - 90, 15);
+			game.ctx.fillText('orb obtained', canvas.width - 90, 15);
 		}
 
 		window.requestAnimationFrame(frame);
