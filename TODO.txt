@@ -1,1 +1,0 @@
-*	clean up map coord code and camera positioning/vector code
